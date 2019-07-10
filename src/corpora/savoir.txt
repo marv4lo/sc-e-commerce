@@ -1,0 +1,3 @@
+savoir,connaitre
+veux,vouloir
+
