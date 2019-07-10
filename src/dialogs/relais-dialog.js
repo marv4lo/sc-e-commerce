@@ -1,9 +1,9 @@
 const { PromptDialog } = require('botfuel-dialog');
 
-class CommandeDialog extends PromptDialog {
+class RelaisDialog extends PromptDialog {
     async dialogWillComplete(userMessage, data) {
         if (data.missingEntities.size === 0) {
-            await this.brain.userSet(userMessage.user, 'isCommandeDialogCompleted', true);
+            await this.brain.userSet(userMessage.user, 'isRelaisDialogCompleted', true);
             return this.complete();
         }
         return this.wait();
@@ -11,15 +11,15 @@ class CommandeDialog extends PromptDialog {
 }
 
 CommandeDialog.params = {
-    namespace: 'commande',
+    namespace: 'relais',
     entities: {
-        numCommande: {
-            dim: 'string',
+        autreRelais: {
+            dim: 'system:boolean',
             isFulfilled: (entity, entities) => {
                 const dialogEntities = entities && entities.dialogEntities;
-                const numCommande = dialogEntities && dialogEntities.numCommande;
+                const autreRelais = dialogEntities && dialogEntities.autreRelais;
 
-                if (numCommande && !numCommande.values[0].value) {
+                if (autreRelais && !autreRelais.values[0].value) {
                     return true;
                 }
 
@@ -29,4 +29,4 @@ CommandeDialog.params = {
     },
 };
 
-module.exports = CommandeDialog;
+module.exports = RelaisDialog;

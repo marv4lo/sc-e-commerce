@@ -1,22 +1,9 @@
 const { PromptView, BotTextMessage } = require('botfuel-dialog');
 
-class CommandeView extends PromptView {
+class RelaisView extends PromptView {
     render(userMessage, { matchedEntities, missingEntities }) {
-        const hasAnswer = !!matchedEntities.numCommande && !missingEntities.numCommande;
-        const isAnswerPositive = hasAnswer && matchedEntities.numCommande.values[0].value;
         const hasRelais = !!matchedEntities.autreRelais && !missingEntities.autreRelais;
         const isRelaisPositive = hasRelais && matchedEntities.autreRelais.values[0].value;
-
-        if (!hasAnswer) {
-            return [
-                new BotTextMessage('Votre colis sera disponible  au relais colis Celtik Fleur de Lannion demain à partir de 14H'),
-                new BotTextMessage('Voulez vous changer de relais-colis ?'),
-            ];
-        }
-
-        if (!isAnswerPositive) {
-            return [new BotTextMessage('Voulez vous changer de relais-colis ?')];
-        }
 
         if (isRelaisPositive) {
             return [
@@ -32,4 +19,4 @@ class CommandeView extends PromptView {
     }
 }
 
-module.exports = CommandeView;
+module.exports = RelaisView;
