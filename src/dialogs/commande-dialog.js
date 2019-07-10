@@ -12,8 +12,8 @@ class CommandeDialog extends PromptDialog {
 TravelDialog.params = {
     namespace: 'commande',
     entities: {
-        letter: {
-            dim: 'string',
+        numero: {
+            dim: 'num',
         },
     },
 };
