@@ -12,10 +12,10 @@ class RelaisView extends PromptView {
             ];
         }
         if (!hasRelais) {
-            return [new BotTextMessage('Can you answer by yes or no?')];
+            return [new BotTextMessage('repondez par oui ou non')];
         }
 
-        return [new BotTextMessage("Qu'est ce que vous voulez alors")];
+        return [new BotTextMessage("Je vous souhaite une bonne journée")];
     }
 }
 

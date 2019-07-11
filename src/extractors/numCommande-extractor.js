@@ -1,13 +1,13 @@
 const { CorpusExtractor, FileCorpus } = require('botfuel-dialog');
 
-class CommandeExtractor extends CorpusExtractor {
+class numCommandeExtractor extends CorpusExtractor {
     constructor() {
         super({
-            dimension: 'string',
+            dimension: 'numCommande',
             corpus: new FileCorpus(`${__dirname}/../corpora/num.txt`),
             options: {},
         });
     }
 }
 
-module.exports = CommandeExtractor;
+module.exports = numCommandeExtractor;

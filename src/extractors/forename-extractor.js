@@ -1,10 +1,9 @@
-
 const { WsExtractor } = require('botfuel-dialog');
 
-class ForenameExtractor extends WsExtractor {}
+class NameExtractor extends WsExtractor {}
 
-ForenameExtractor.params = {
-  dimensions: ['forename'],
+NameExtractor.params = {
+    dimensions: ['forename'],
 };
 
-module.exports = ForenameExtractor;
+module.exports = NameExtractor;

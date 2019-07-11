@@ -10,7 +10,7 @@ class RelaisDialog extends PromptDialog {
     }
 }
 
-CommandeDialog.params = {
+RelaisDialog.params = {
     namespace: 'relais',
     entities: {
         autreRelais: {

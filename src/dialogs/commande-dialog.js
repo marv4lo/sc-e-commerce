@@ -14,12 +14,17 @@ CommandeDialog.params = {
     namespace: 'commande',
     entities: {
         numCommande: {
-            dim: 'string',
+            dim: 'numCommande',
+            priority: 1,
+        },
+        secondAnswer: {
+            dim: 'system:boolean',
+            priority: 2,
             isFulfilled: (entity, entities) => {
                 const dialogEntities = entities && entities.dialogEntities;
-                const numCommande = dialogEntities && dialogEntities.numCommande;
+                const firstAnswer = dialogEntities && dialogEntities.firstAnswer;
 
-                if (numCommande && !numCommande.values[0].value) {
+                if (firstAnswer && !firstAnswer.values[0].value) {
                     return true;
                 }
 

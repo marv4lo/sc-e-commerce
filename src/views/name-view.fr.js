@@ -1,18 +1,20 @@
-
 const { PromptView, BotTextMessage } = require('botfuel-dialog');
 
 class NameView extends PromptView {
-  renderAsk() {
-    return [new BotTextMessage('Do you still want me to ask your name?')];
-  }
+    render(userMessage, { matchedEntities }) {
+        const name = matchedEntities.name && matchedEntities.name.values[0].value;
 
-  renderConfirm() {
-    return [new BotTextMessage('You still want me to ask your name.')];
-  }
+        if (name) {
+            const [firstLetter, ...letters] = name;
+            const capitalizedName = `${firstLetter.toUpperCase()}${letters.join('')}`;
 
-  renderDiscard() {
-    return [new BotTextMessage("You don't want me to ask your name anymore.")];
-  }
+            return [
+                new BotTextMessage(`C'est un plaisir ${capitalizedName}!`),
+            ];
+        }
+
+        return [new BotTextMessage(`Pardon je n'ai pas compris!`)];
+    }
 }
 
 module.exports = NameView;
