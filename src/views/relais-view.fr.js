@@ -1,4 +1,4 @@
-const { PromptView, BotTextMessage } = require('botfuel-dialog');
+const { PromptView, QuickrepliesMessage, BotTextMessage } = require('botfuel-dialog');
 
 class RelaisView extends PromptView {
     render(userMessage, { matchedEntities, missingEntities }) {
@@ -8,7 +8,8 @@ class RelaisView extends PromptView {
         if (isRelaisPositive) {
             return [
                 new BotTextMessage('Très bien, je recherche les relais colis pour Lannion'),
-                new BotTextMessage('Nous pouvons livrer votre colis au magasin Intermarché Lannion Saint Marc, ou au magasin Decathlon Saint Quay Perros  ou au magasin Celtic fleur  à Lannion'),
+                new BotTextMessage('Nous pouvons livrer votre colis au magasin'),
+                new QuickrepliesMessage(['Intermarché Lannion Saint Marc', 'Decathlon Saint Quay Perros', 'Celtic fleur à Lannion']),
             ];
         }
         if (!hasRelais) {
